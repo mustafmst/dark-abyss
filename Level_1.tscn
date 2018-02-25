@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://player/sprite_307.png" type="Texture" id=2]
+[ext_resource path="res://player/sprite_308.png" type="Texture" id=3]
+[ext_resource path="res://player/sprite_327.png" type="Texture" id=4]
+[ext_resource path="res://player/sprite_310.png" type="Texture" id=5]
+[ext_resource path="res://player/sprite_312.png" type="Texture" id=6]
+[ext_resource path="res://tileset.tres" type="TileSet" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 6.11151, 9 )
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+} ]
+_sections_unfolded = [ "Resource" ]
+
+[node name="Node2D" type="Node2D" index="0"]
+
+[node name="Player" type="KinematicBody2D" parent="." index="0"]
+
+position = Vector2( 224, 112 )
+scale = Vector2( 0.25, 0.25 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" index="0"]
+
+position = Vector2( -1.66182, 1.662 )
+scale = Vector2( 3.2, 3.2 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="AnimatedSprite" parent="Player" index="1"]
+
+position = Vector2( -31.7229, -33.662 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 2 )
+animation = "idle"
+frame = 1
+playing = true
+centered = false
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="TileMap" type="TileMap" parent="." index="1"]
+
+mode = 0
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 18, 1, 0, 19, 1, 0, 20, 1, 0, 21, 1, 0, 22, 1, 0, 23, 1, 0, 24, 1, 0, 25, 1, 0, 26, 1, 0, 27, 1, 0, 28, 1, 0, 29, 1, 0, 30, 1, 0, 31, 1, 0, 65536, 1, 0, 65567, 1, 0, 131072, 1, 0, 131103, 1, 0, 196608, 1, 0, 196639, 1, 0, 262144, 1, 0, 262175, 1, 0, 327680, 1, 0, 327711, 1, 0, 393216, 1, 0, 393247, 1, 0, 458752, 1, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458783, 1, 0, 524288, 1, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 0, 0, 524311, 0, 0, 524312, 0, 0, 524319, 1, 0, 589824, 1, 0, 589855, 1, 0, 655360, 1, 0, 655391, 1, 0, 720896, 1, 0, 720905, 0, 0, 720906, 0, 0, 720907, 0, 0, 720908, 0, 0, 720927, 1, 0, 786432, 1, 0, 786463, 1, 0, 851968, 1, 0, 851990, 0, 0, 851991, 0, 0, 851992, 0, 0, 851993, 0, 0, 851994, 0, 0, 851999, 1, 0, 917504, 1, 0, 917507, 0, 0, 917508, 0, 0, 917509, 0, 0, 917510, 0, 0, 917535, 1, 0, 983040, 1, 0, 983071, 1, 0, 1048576, 1, 0, 1048607, 1, 0, 1114112, 1, 0, 1114143, 1, 0, 1179648, 1, 0, 1179649, 1, 0, 1179650, 1, 0, 1179651, 1, 0, 1179652, 1, 0, 1179653, 1, 0, 1179654, 1, 0, 1179655, 1, 0, 1179656, 1, 0, 1179657, 1, 0, 1179658, 1, 0, 1179659, 1, 0, 1179660, 1, 0, 1179661, 1, 0, 1179662, 1, 0, 1179663, 1, 0, 1179664, 1, 0, 1179665, 1, 0, 1179666, 1, 0, 1179667, 1, 0, 1179668, 1, 0, 1179669, 1, 0, 1179670, 1, 0, 1179671, 1, 0, 1179672, 1, 0, 1179673, 1, 0, 1179674, 1, 0, 1179675, 1, 0, 1179676, 1, 0, 1179677, 1, 0, 1179678, 1, 0, 1179679, 1, 0 )
+_sections_unfolded = [ "Cell" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+
