@@ -10,7 +10,7 @@ config_version=3
 
 [application]
 
-config/name="tilemaps"
+config/name="dark-abyss"
 run/main_scene="res://Level_1.tscn"
 config/icon="res://icon.png"
 

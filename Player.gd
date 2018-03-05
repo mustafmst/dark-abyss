@@ -9,23 +9,32 @@ const UP = Vector2(0, -1)
 
 var motion = Vector2(0,0)
 
-func _process(delta):
-	print(delta)
-	print(is_on_floor())
-	gravity_work(delta)
-	if Input.is_action_pressed("ui_right"):
-		motion.x = MAX_SPEED
-	elif Input.is_action_pressed("ui_left"):
-		motion.x = -MAX_SPEED
-	elif is_on_floor():
-			motion.x = 0
-	if Input.is_action_just_pressed("ui_up") && is_on_floor():
-		motion.y = JUMP_FORCE
+func _physics_process(delta):
+	motion.y += GRAVITY
 	motion = move_and_slide(motion, UP)
+	pass
+
+func _process(delta):
+	var is_on_floor = is_on_floor()
+	if Input.is_action_pressed("ui_right"):
+		set_motion(false, is_on_floor)
+	elif Input.is_action_pressed("ui_left"):
+		set_motion(true, is_on_floor)
+	else :
+			motion.x = 0
+			$Sprite.play("idle")
+	if Input.is_action_just_pressed("ui_up") && is_on_floor:
+		motion.y = JUMP_FORCE
+		$Sprite.play("jump")
 	if motion.x != 0:
 		$Sprite.flip_h = !motion.x > 0
 	pass
 
-func gravity_work(delta):
-	motion.y += GRAVITY
+func set_motion(is_moving_left, on_floor):
+	var direction = 1
+	if is_moving_left:
+		direction = -1
+	motion.x = MAX_SPEED * direction
+	if on_floor:
+		$Sprite.play("run")
 	pass
