@@ -1,12 +1,11 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
-[ext_resource path="res://player/Assets/sprite_327.png" type="Texture" id=2]
-[ext_resource path="res://player/Assets/sprite_310.png" type="Texture" id=3]
-[ext_resource path="res://player/Assets/sprite_312.png" type="Texture" id=4]
-[ext_resource path="res://player/Assets/sprite_307.png" type="Texture" id=5]
-[ext_resource path="res://player/Assets/sprite_308.png" type="Texture" id=6]
-
+[ext_resource path="res://player/Assets/sprite_307.png" type="Texture" id=2]
+[ext_resource path="res://player/Assets/sprite_308.png" type="Texture" id=3]
+[ext_resource path="res://player/Assets/sprite_327.png" type="Texture" id=4]
+[ext_resource path="res://player/Assets/sprite_310.png" type="Texture" id=5]
+[ext_resource path="res://player/Assets/sprite_312.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -16,25 +15,24 @@ extents = Vector2( 6.11151, 9 )
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "run",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
-"name": "idle",
+"name": "run",
 "speed": 5.0
 } ]
 
 [node name="Player" type="KinematicBody2D"]
 
-position = Vector2( 160, 144 )
 scale = Vector2( 0.25, 0.25 )
 input_pickable = false
 collision_layer = 1

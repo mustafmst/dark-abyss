@@ -22,6 +22,7 @@ func _process(delta):
 		set_motion(true, is_on_floor)
 	else :
 			motion.x = 0
+	if motion.x == 0 && motion.y == 0 :
 			$Sprite.play("idle")
 	if Input.is_action_just_pressed("ui_up") && is_on_floor:
 		motion.y = JUMP_FORCE
